@@ -12,16 +12,3 @@ render(
   </AppContainer>,
   document.getElementById('root')
 );
-
-if (module.hot) {
-  module.hot.accept('./App', () => {
-    const NextApp = require('./App').default;
-
-    render(
-      <AppContainer>
-        <NextApp appState={appState} />
-      </AppContainer>,
-      document.getElementById('root')
-    );
-  });
-}

@@ -1,16 +1,20 @@
-import { observable } from 'mobx';
+import { observable, action } from 'mobx';
 
 class AppState {
   @observable timer = 0;
-
-  constructor() {
-    setInterval(() => {
-      this.timer += 1;
-    }, 1000);
+  @observable value = '';
+  
+  onChange(ev) {
+    this.value = ev.target.value;
+    this.valid(this.value);
   }
-
-  resetTimer() {
-    this.timer = 0;
+  
+  valid(value) {
+    if (!/\d+/.test(value)) {
+      this.validText = '必须是纯数字';
+    } else {
+      this.validText = '';
+    }
   }
 }
 

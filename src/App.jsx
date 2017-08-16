@@ -5,19 +5,21 @@ import DevTools from 'mobx-react-devtools';
 @observer
 class App extends Component {
   render() {
+    console.log(this.props.appState.value, this.props.appState.validText)
     return (
       <div>
-        <button onClick={this.onReset}>
-          Seconds passed: {this.props.appState.timer}
-        </button>
+        <input
+          type="text"
+          value={this.props.appState.value}
+          onChange={this.props.appState.onChange.bind(this.props.appState)}
+        />
+        <div>
+          {this.props.appState.validText}
+        </div>
         <DevTools />
       </div>
     );
   }
-
-  onReset = () => {
-    this.props.appState.resetTimer();
-  }
-};
+}
 
 export default App;
