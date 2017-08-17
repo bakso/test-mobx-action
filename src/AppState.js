@@ -1,8 +1,8 @@
 import { observable, action } from 'mobx';
 
 class AppState {
-  @observable timer = 0;
-  @observable value = '';
+  @observable value = 0;
+  @observable validText = '';
   
   onChange(ev) {
     this.value = ev.target.value;
@@ -10,7 +10,7 @@ class AppState {
   }
   
   valid(value) {
-    if (!/\d+/.test(value)) {
+    if (!/^\d+$/.test(value)) {
       this.validText = '必须是纯数字';
     } else {
       this.validText = '';
